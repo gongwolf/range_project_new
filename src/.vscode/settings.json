@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/gqxwolf/mydata/range_project/bin/python"
+    "python.pythonPath": "/home/gqxwolf/mydata/range_project_new/bin/python",
+    "python.formatting.provider": "black"
 }

@@ -6,10 +6,12 @@ from writeToDisk import writeToDisk
 from datetime import datetime
 import json
 from gevent.pywsgi import WSGIServer
+import logging
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'top secret!'
+app.logger.setLevel(logging.INFO)
 
 token_serializer = Serializer(app.config['SECRET_KEY'])
 
@@ -40,6 +42,7 @@ def webhook():
     if request.method == 'POST':
         json_data = request.json
         print("recievied the data at -- {} -- from [{}]".format(datetime.now(), json_data['deviceEUI']))
+        app.logger.info("recievied the data at -- {} -- from [{}]".format(datetime.now(), json_data['deviceEUI']))
         writeToDisk(json.dumps(json_data))
         return '', 200
     else:
