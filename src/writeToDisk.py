@@ -1,7 +1,7 @@
 # %%
 from datetime import date
 from pathlib import Path
-import json 
+import json
 
 # json_data = """
 # {
@@ -53,6 +53,7 @@ import json
 
 # %%
 
+
 def writeToDisk(json_data):
     log_folder = "./log"
     p = Path(log_folder)
@@ -65,17 +66,16 @@ def writeToDisk(json_data):
         # print("The log file does not exist, create it")
         with open(log_p, 'w') as f:
             f.write("[")
-            f.write(json_data)    
+            f.write(json_data)
             f.write("]")
     else:
         # print("The log file exists, open it")
-        json_file = open(log_p, 'r')        
+        json_file = open(log_p, 'r')
         data = json.load(json_file)
         json_file.close()
         data.append(json.loads(json_data))
         with open(log_p, 'w') as f:
             json.dump(data, f)
-        
 
 
 # %%
