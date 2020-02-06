@@ -1,7 +1,7 @@
 asn1crypto==0.24.0
 backports.functools-lru-cache==1.5
 cheroot==8.1.0
-cryptography==2.1.4
+cryptography==2.3
 enum34==1.1.6
 gyp==0.1
 h5py==2.9.0
