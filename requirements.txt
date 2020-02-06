@@ -18,7 +18,7 @@ more-itertools==7.2.0
 mysql-connector-python==2.1.6
 mysql-utilities==1.6.4
 numpy==1.16.5
-paramiko==2.0.0
+paramiko==2.0.9
 pexpect==4.2.1
 psutil==5.4.2
 pyasn1==0.4.2
