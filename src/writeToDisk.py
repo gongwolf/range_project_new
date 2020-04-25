@@ -55,7 +55,7 @@ import json
 
 
 def writeToDisk(json_data):
-    log_folder = "./log"
+    log_folder = "Z:\logs"
     p = Path(log_folder)
     if not p.exists():
         p.mkdir()
