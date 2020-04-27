@@ -12,7 +12,7 @@ class processedPacketObj:
 
 @dataclass
 class rawPositionObj:
-    coordinates: {"lng": -9999, "lat": -9999, "alt": -9999}
+    coordinates: dict
     rawPositionType: str = ""
 
 
