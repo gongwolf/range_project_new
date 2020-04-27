@@ -6,7 +6,7 @@ pyvenv.cfg
 share
 Scripts
 
-src/log
+src/logs
 src/.vscode
 src/__pycache__
 src/gps_getting_server.log
