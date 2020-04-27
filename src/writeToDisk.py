@@ -67,7 +67,7 @@ import sys
 
 def processRecord(data):
     try:
-    # print("{} : {} ".format(idx, record))
+        # print("{} : {} ".format(idx, record))
         coordinate = {
             "lng": data["coordinates"][0],
             "lat": data["coordinates"][1],
@@ -190,7 +190,8 @@ def updateTheCSVFile(str_log_file_name, record):
         new_df = csv_df.append(new_row, ignore_index=True)
         csv_p.unlink()
         # print(new_df.head())
-        new_df.sort_values(['deviceEUI', 'time'], ascending=[True, True])
+        new_df = new_df.sort_values(['deviceEUI', 'time'], ascending=[True, True])
+        new_df.drop_duplicates(keep='first', inplace=True)
         new_df.to_csv(csv_p, index=None)
 
 
