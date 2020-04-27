@@ -15,53 +15,53 @@ import io
 
 import sys
 
-json_data = """
-{
-  "dxProfileId": "iot-api",
-  "customerId": "100033601",
-  "deviceEUI": "20635F00C8000015",
-  "time": "2019-10-10T21:44:03.311000+00:00",
-  "coordinates": [
-    -106.80398,
-    32.529972,
-    0.0
-  ],
-  "age": 188961,
-  "validityState": "PREVIOUS",
-  "horizontalAccuracy": 7,
-  "processedFeed": {
-    "payloadEncoded": "03489499a0251370fec0608e01dca206",
-    "sequenceNumber": 13895,
-    "dynamicMotionState": "STATIC",
-    "temperatureMeasure": 33.4,
-    "processedPacket": {
-      "RSSI": -45.0,
-      "baseStationId": "08080056",
-      "antennaCoordinates": [
-        -106.74136,
-        32.61721
-      ]
-    }
-  },
-  "rawPosition": {
-    "rawPositionType": "RawPositionByGpsSolver",
-    "coordinates": [
-      -106.7414,
-      32.617214,
-      0.0
-    ]
-  },
-  "resolvedTracker": {
-    "firmwareVersion": "1.7.3",
-    "messageType": "Position Message",
-    "trackingMode": "PERMANENT_TRACKING",
-    "gpsScanMode": "UNKNOWN",
-    "sensorMode": "GPS_ONLY",
-    "periodicPositionInterval": 0,
-    "batteryLevel": 68,
-    "activityCount": -1
-  }
-}"""
+# json_data = """
+# {
+#   "dxProfileId": "iot-api",
+#   "customerId": "100033601",
+#   "deviceEUI": "20635F00C8000015",
+#   "time": "2019-10-10T21:44:03.311000+00:00",
+#   "coordinates": [
+#     -106.80398,
+#     32.529972,
+#     0.0
+#   ],
+#   "age": 188961,
+#   "validityState": "PREVIOUS",
+#   "horizontalAccuracy": 7,
+#   "processedFeed": {
+#     "payloadEncoded": "03489499a0251370fec0608e01dca206",
+#     "sequenceNumber": 13895,
+#     "dynamicMotionState": "STATIC",
+#     "temperatureMeasure": 33.4,
+#     "processedPacket": {
+#       "RSSI": -45.0,
+#       "baseStationId": "08080056",
+#       "antennaCoordinates": [
+#         -106.74136,
+#         32.61721
+#       ]
+#     }
+#   },
+#   "rawPosition": {
+#     "rawPositionType": "RawPositionByGpsSolver",
+#     "coordinates": [
+#       -106.7414,
+#       32.617214,
+#       0.0
+#     ]
+#   },
+#   "resolvedTracker": {
+#     "firmwareVersion": "1.7.3",
+#     "messageType": "Position Message",
+#     "trackingMode": "PERMANENT_TRACKING",
+#     "gpsScanMode": "UNKNOWN",
+#     "sensorMode": "GPS_ONLY",
+#     "periodicPositionInterval": 0,
+#     "batteryLevel": 68,
+#     "activityCount": -1
+#   }
+# }"""
 
 
 def processRecord(data):
@@ -228,4 +228,4 @@ def writeToDisk(json_data):
     updateTheCSVFile(str_today, json_data)
 
 
-writeToDisk(json_data)
+# writeToDisk(json_data)
