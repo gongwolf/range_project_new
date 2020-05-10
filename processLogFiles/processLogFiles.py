@@ -150,7 +150,7 @@ for f in log_files:
     month = log_p.stem.split("_")[1]
     day = log_p.stem.split("_")[2]
 
-    str_file_name = year + "_" + month + "_" + day + "_" + ".csv"
+    str_file_name = year + "_" + month + "_" + day + ".csv"
     csv_p = p / str_file_name
 
     if csv_p.exists():
