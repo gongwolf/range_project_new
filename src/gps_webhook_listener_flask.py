@@ -84,7 +84,14 @@ def call_gps_count_refresh():
         str_result += s + "\n"
     str_result += "The GPS records refresh finished !!!!!.\n"
     app.logger.info(str_result)
-    return str_result
+
+
+    web_result: str = ""
+    for s in result:
+        web_result += s + "<br>"
+    web_result += "The GPS records refresh finished !!!!!.<br>"
+
+    return web_result
 
 
 if __name__ == "__main__":
