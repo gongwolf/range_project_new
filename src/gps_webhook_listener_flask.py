@@ -6,8 +6,18 @@ from writeToDisk import writeToDisk
 from datetime import datetime
 import json
 from gevent.pywsgi import WSGIServer
+import sys
+from sys import platform
+import os
 
-import statistics.record_count as rc
+if platform == "linux":
+    home_folder = "/home/gqxwolf/mydata/range_project_new"
+elif platform == "win32":
+    home_folder = 'C:\range_project_new'
+
+sys.path.append(os.path.join(home_folder, 'statistics'))
+
+from record_count import record_count_with_date, record_count
 
 logging.basicConfig(filename="gps_getting_server.log")
 
@@ -65,14 +75,15 @@ def call_gps_count_refresh():
         date = request.args['date']
         if date == "today":
             date = datetime.now().strftime("%Y_%m_%d")
-        result = rc.record_count_with_date(date)
+        result = record_count_with_date(date)
     else:
-        result = rc.record_count()
+        result = record_count()
 
     str_result: str = ""
     for s in result:
         str_result += s + "\n"
     str_result += "The GPS records refresh finished !!!!!.\n"
+    app.logger.info(str_result)
     return str_result
 
 

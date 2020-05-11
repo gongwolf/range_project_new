@@ -1,6 +1,7 @@
 {
-    "python.pythonPath": "C:\\range_project_new\\Scripts\\python.exe",
+    "python.pythonPath": "/usr/bin/python3",
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
-    "python.linting.pylintEnabled": false
+    "python.linting.pylintEnabled": false,
+    "python.formatting.provider": "black"
 }

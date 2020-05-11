@@ -5,9 +5,17 @@ from os.path import isfile, join
 from os import listdir
 from pathlib import Path
 from typing import List
+import schedule
+import sys
+
+if platform == "linux":
+    home_folder = "/home/gqxwolf/mydata/range_project_new"
+elif platform == "win32":
+    home_folder = 'C:\range_project_new'
+
+sys.path.append(home_folder)
 
 import tools.gps_tools
-import schedule
 
 if platform == "linux":
     path = "/home/gqxwolf/google-drive/Cibils_Project/log"
