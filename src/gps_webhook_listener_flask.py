@@ -13,7 +13,7 @@ import os
 if platform == "linux":
     home_folder = "/home/gqxwolf/mydata/range_project_new"
 elif platform == "win32":
-    home_folder = 'C:\range_project_new'
+    home_folder = 'C:\\range_project_new'
 
 sys.path.append(os.path.join(home_folder, 'statistics'))
 
