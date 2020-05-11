@@ -103,6 +103,7 @@ def record_count():
 
 
 if __name__ == "__main__":
+    # record_count_with_date("2020_04_20")
     today = datetime.now().strftime("%Y_%m_%d")
     yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y_%m_%d")
     schedule.every().day.at("00:10").do(record_count(today))
@@ -115,4 +116,4 @@ if __name__ == "__main__":
 
     while True:
         schedule.run_pending()
-        time.sleep(30)
+        time.sleep(60)
