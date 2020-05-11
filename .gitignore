@@ -12,4 +12,5 @@ src/__pycache__
 src/gps_getting_server.log
 
 log
+logs
 processLogFiles/logs

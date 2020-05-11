@@ -1,0 +1,87 @@
+from selenium import  webdriver
+from selenium.webdriver.common.keys import Keys
+
+import time
+from selenium.webdriver.common.action_chains import ActionChains
+from bs4 import BeautifulSoup
+
+driver = webdriver.Chrome(
+    '/home/gqxwolf/Downloads/chromedriver_linux64/chromedriver')  # Optional argument, if not specified will search path.
+driver.get('https://iot.thingpark.com/abeewayDeviceAnalyzer/index.php');
+time.sleep(8)  # Let the user actually see something!
+
+window_before_login = driver.window_handles[0]
+print(window_before_login)
+open_login_btn = driver.find_element_by_css_selector("#dialogSsoLogin > div.button > span")
+open_login_btn.click()
+time.sleep(3)  # Let the user actually see something!
+
+window_login = driver.window_handles[1]
+driver.switch_to.window(window_login)
+print(window_login)
+time.sleep(3)  # Let the user actually see something!
+
+input_usr_name = driver.find_element_by_css_selector("#login")
+input_pwd = driver.find_element_by_css_selector("#password")
+login_btn = driver.find_element_by_css_selector("#loginBtn")
+input_usr_name.send_keys("acibils@nmsu.edu")
+input_pwd.send_keys("CDRRClorawan2020")
+login_btn.click()
+
+time.sleep(3)  # Let the user actually see something!
+window_login_after = driver.window_handles[0]
+print(window_login_after)
+driver.switch_to.window(window_login_after)
+
+driver.maximize_window()
+track1 = driver.find_element_by_id("20635F00C8000015choice")
+track2 = driver.find_element_by_id("20635F00C8000062choice")
+track3 = driver.find_element_by_id("20635F00C80000EDchoice")
+track1.click()
+track2.click()
+track3.click()
+
+time.sleep(10)  # Let the user actually see something!
+
+device_start_datetime_input = driver.find_element_by_id("after")
+device_end_datetime_input = driver.find_element_by_id("before")
+
+action = ActionChains(driver)
+# action.double_click(device_start_datetime_input).send_keys()
+
+device_start_datetime_input.clear()
+device_start_datetime_input.send_keys("2020-04-30 00:00")
+action.send_keys(Keys.ESCAPE).perform()
+
+device_end_datetime_input.clear()
+device_end_datetime_input.send_keys("2020-04-30 23:59")
+action.send_keys(Keys.ESCAPE).perform()
+time.sleep(2)
+
+
+select_btn = driver.find_element_by_css_selector("body > div.align > div:nth-child(9) > table.tracker-buttons-right > tbody > tr:nth-child(2) > td > input")
+select_btn.click()
+time.sleep(2)
+
+driver.find_element_by_css_selector("#menu > ul > li.debugLocations.tab-select").click()
+
+
+# ee = driver.find_element_by_id("log-export-20635F00C8000062")
+# action.click(ee).click(ee).perform()
+# print("=========================================================")
+
+csv_list = driver.find_elements_by_css_selector("#debugLocations > .maintable-title.debugloc > tbody > tr > th > input ")
+
+print(len(csv_list))
+for csv_btn in csv_list:
+    outer_html = csv_btn.get_attribute('outerHTML')
+    print(outer_html)
+    bs4_outer = BeautifulSoup(outer_html, 'html.parser')
+    print(bs4_outer.input['id'].split("-")[2])
+    action.click(csv_btn).perform()
+    print("--------------------------------------")
+    # driver.implicitly_wait(5)
+
+time.sleep(3000)
+
+driver.quit()

@@ -1,17 +1,15 @@
 import json
 from os import listdir
 from os.path import isfile, join, basename
-import sys
 
-from GPSrecord import GPSrecord
-from GPSrecord import processedFeedObj
-from GPSrecord import processedPacketObj
-from GPSrecord import resolvedTrackerObj
-from GPSrecord import rawPositionObj
+from tools.GPSrecord import GPSrecord
+from tools.GPSrecord import processedFeedObj
+from tools.GPSrecord import processedPacketObj
+from tools.GPSrecord import resolvedTrackerObj
+from tools.GPSrecord import rawPositionObj
 
 from sys import platform
 from pathlib import Path
-from datetime import date
 import pandas as pd
 
 if platform == "linux":
@@ -125,11 +123,6 @@ def read_Json(f):
         #         f.write("============================================\n")
 
     return gps_records
-
-
-def tojson(obj):
-    return json.dumps(obj, default=lambda o: o.__dict__)
-
 
 for f in log_files:
     # if f.__contains__("2020_03_20_gps.log"):
