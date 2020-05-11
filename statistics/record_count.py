@@ -1,8 +1,11 @@
-import sys
+import time
+from datetime import datetime, timedelta
 from sys import platform
-from os.path import isfile, join, basename
+from os.path import isfile, join
 from os import listdir
 from pathlib import Path
+from typing import List
+
 import tools.gps_tools
 import schedule
 
@@ -31,17 +34,11 @@ def record_quality_count(gps_records):
         elif vadility == "PREVIOUS" or vadility == "INVALID":
             result[device_id]["bad"] += 1
             result['Overall']["bad"] += 1
-
-    # for key, value in result.items():
-    #     print("{} {}".format(key, value))
     return result
 
 
-def main():
-    print("There are total {} devices.".format(len(device_list)))
-
-    log_files = [join(path, f) for f in listdir(path) if isfile(join(path, f))]
-
+def process_log_files_quality_count(log_files):
+    result: List[str] = []
     if platform == "linux":
         log_folder = home_folder + '/logs/statistics'
     elif platform == "win32":
@@ -58,7 +55,9 @@ def main():
 
         gps_records = tools.gps_tools.read_Json(f)
         counts_results = record_quality_count(gps_records)
-        print("In the file {}, there are {} records are found ".format(f, len(gps_records)))
+        str_re = "In the file {}, there are {} records are found ".format(f, len(gps_records));
+        print(str_re)
+        result.append(str_re)
 
         file_name = "record_statistics_" + year + "_" + month + "_" + day + ".csv"
 
@@ -72,6 +71,40 @@ def main():
             for key, value in counts_results.items():
                 f.write("{},{},{},{}\n".format(key, value['total'], value['bad'], value['new']))
 
+    dt_string = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    str_re = "{} : ================================================================".format(dt_string)
+    print(str_re)
+    result.append(str_re)
+    return result
+
+
+def record_count_with_date(date):
+    print("Call refresh function with parameters [{}] !!!!!!".format(date))
+    print("There are total {} devices.".format(len(device_list)))
+    log_files = [join(path, f) for f in listdir(path) if isfile(join(path, f)) and f.__contains__(date)]
+    result = process_log_files_quality_count(log_files)
+    return result
+
+
+def record_count():
+    print("Call refresh function without parameters !!!!!!")
+    print("There are total {} devices.".format(len(device_list)))
+    log_files = [join(path, f) for f in listdir(path) if isfile(join(path, f))]
+    result = process_log_files_quality_count(log_files)
+    return result
+
 
 if __name__ == "__main__":
-    main()
+    today = datetime.now().strftime("%Y_%m_%d")
+    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y_%m_%d")
+    schedule.every().day.at("00:10").do(record_count(today))
+    schedule.every().day.at("00:10").do(record_count(yesterday))
+
+    schedule.every().day.at("06:00").do(record_count(today))
+    schedule.every().day.at("12:00").do(record_count(today))
+    schedule.every().day.at("18:00").do(record_count(today))
+    schedule.every().day.at("23:00").do(record_count(today))
+
+    while True:
+        schedule.run_pending()
+        time.sleep(30)

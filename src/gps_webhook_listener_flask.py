@@ -7,6 +7,8 @@ from datetime import datetime
 import json
 from gevent.pywsgi import WSGIServer
 
+import statistics.record_count as rc
+
 logging.basicConfig(filename="gps_getting_server.log")
 
 app = Flask(__name__)
@@ -20,7 +22,7 @@ auth = HTTPTokenAuth("Bearer")
 users = ["gqxwolf", "Huiping", "Cibils"]
 for user in users:
     token = token_serializer.dumps({"username": user}).decode("utf-8")
-    print("*** token for {}: {}\n".format(user, token))
+    print("*** token for {}: {}".format(user, token))
 
 
 @auth.verify_token
@@ -55,6 +57,23 @@ def webhook():
         return "", 200
     else:
         abort(400)
+
+
+@app.route("/api/vi/gps/qualitycounts/refresh", methods=["GET"])
+def call_gps_count_refresh():
+    if 'date' in request.args:
+        date = request.args['date']
+        if date == "today":
+            date = datetime.now().strftime("%Y_%m_%d")
+        result = rc.record_count_with_date(date)
+    else:
+        result = rc.record_count()
+
+    str_result: str = ""
+    for s in result:
+        str_result += s + "\n"
+    str_result += "The GPS records refresh finished !!!!!.\n"
+    return str_result
 
 
 if __name__ == "__main__":
