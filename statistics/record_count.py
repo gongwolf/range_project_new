@@ -86,7 +86,7 @@ def process_log_files_quality_count(log_files):
             for key, value in counts_results.items():
                 f.write(
                     "{},{},{},{}\n".format(
-                        key, value["total"], value["bad"], value["new"]
+                        key, value["total"], value["new"], value["bad"]
                     )
                 )
 
@@ -118,18 +118,25 @@ def record_count():
     result = process_log_files_quality_count(log_files)
     return result
 
+def record_count_with_today():
+    today = datetime.now().strftime("%Y_%m_%d")
+    record_count_with_date(today)
+
+def record_count_with_yesterday():
+    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y_%m_%d")
+    record_count_with_date(yesterday)
 
 if __name__ == "__main__":
     # record_count_with_date("2020_04_20")
     today = datetime.now().strftime("%Y_%m_%d")
     yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y_%m_%d")
-    schedule.every().day.at("00:10").do(lambda: record_count_with_date(today))
-    schedule.every().day.at("00:10").do(lambda: record_count_with_date(yesterday))
+    schedule.every().day.at("00:10").do(lambda: record_count_with_today)
+    schedule.every().day.at("00:10").do(lambda: record_count_with_yesterday)
 
-    schedule.every().day.at("06:00").do(lambda: record_count_with_date(today))
-    schedule.every().day.at("12:00").do(lambda: record_count_with_date(today))
-    schedule.every().day.at("18:00").do(lambda: record_count_with_date(today))
-    schedule.every().day.at("23:00").do(lambda: record_count_with_date(today))
+    schedule.every().day.at("06:00").do(lambda: record_count_with_today)
+    schedule.every().day.at("12:00").do(lambda: record_count_with_today)
+    schedule.every().day.at("18:00").do(lambda: record_count_with_today)
+    schedule.every().day.at("23:00").do(lambda: record_count_with_today)
 
     # schedule.run_all()
     while True:
