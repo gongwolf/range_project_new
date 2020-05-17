@@ -25,7 +25,6 @@ elif platform == "win32":
 
 device_data_file = join(home_folder, "data", "DeviceList")
 
-
 with open(device_data_file) as f:
     device_list = f.readlines()
     device_list = [d.strip() for d in device_list]
@@ -118,25 +117,28 @@ def record_count():
     result = process_log_files_quality_count(log_files)
     return result
 
+
 def record_count_with_today():
     today = datetime.now().strftime("%Y_%m_%d")
     record_count_with_date(today)
+
 
 def record_count_with_yesterday():
     yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y_%m_%d")
     record_count_with_date(yesterday)
 
+
 if __name__ == "__main__":
     # record_count_with_date("2020_04_20")
-    today = datetime.now().strftime("%Y_%m_%d")
-    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y_%m_%d")
-    schedule.every().day.at("00:10").do(lambda: record_count_with_today)
-    schedule.every().day.at("00:10").do(lambda: record_count_with_yesterday)
+    # today = datetime.now().strftime("%Y_%m_%d")
+    # yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y_%m_%d")
+    schedule.every().day.at("00:10").do(record_count_with_today)
+    schedule.every().day.at("00:10").do(record_count_with_yesterday)
 
-    schedule.every().day.at("06:00").do(lambda: record_count_with_today)
-    schedule.every().day.at("12:00").do(lambda: record_count_with_today)
-    schedule.every().day.at("18:00").do(lambda: record_count_with_today)
-    schedule.every().day.at("23:00").do(lambda: record_count_with_today)
+    schedule.every().day.at("06:00").do(record_count_with_today)
+    schedule.every().day.at("12:00").do(record_count_with_today)
+    schedule.every().day.at("18:00").do(record_count_with_today)
+    schedule.every().day.at("23:00").do(record_count_with_today)
 
     # schedule.run_all()
     while True:
