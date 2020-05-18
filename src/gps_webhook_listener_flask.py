@@ -16,8 +16,10 @@ elif platform == "win32":
     home_folder = 'C:\\range_project_new'
 
 sys.path.append(os.path.join(home_folder, 'statistics'))
+sys.path.append(os.path.join(home_folder, 'statistics', 'MCP'))
 
 from record_count import record_count_with_date, record_count
+from MCP import mcp_without_data, mcp_with_date
 
 logging.basicConfig(filename="gps_getting_server.log")
 
@@ -85,11 +87,34 @@ def call_gps_count_refresh():
     str_result += "The GPS records refresh finished !!!!!.\n"
     app.logger.info(str_result)
 
-
     web_result: str = ""
     for s in result:
         web_result += s + "<br>"
     web_result += "The GPS records refresh finished !!!!!.<br>"
+
+    return web_result
+
+
+@app.route("/api/vi/gps/mcp/refresh", methods=["GET"])
+def call_mcp_refresh():
+    if 'date' in request.args:
+        date = request.args['date']
+        if date == "today":
+            date = datetime.now().strftime("%Y_%m_%d")
+        result = mcp_with_date(date)
+    else:
+        result = mcp_without_data()
+
+    str_result: str = ""
+    for s in result:
+        str_result += s + "\n"
+    str_result += "The GPS MCP refresh finished !!!!!.\n"
+    app.logger.info(str_result)
+
+    web_result: str = ""
+    for s in result:
+        web_result += s + "<br>"
+    web_result += "The GPS MCP refresh finished !!!!!.<br>"
 
     return web_result
 

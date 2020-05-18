@@ -50,9 +50,9 @@ def record_quality_count(gps_records):
 def process_log_files_quality_count(log_files):
     result: List[str] = []
     if platform == "linux":
-        log_folder = home_folder + "/logs/statistics"
+        log_folder = home_folder + "/logs/statistics/record_quality"
     elif platform == "win32":
-        log_folder = "Z:\logs\statistics"
+        log_folder = "Z:\logs\statistics\\record_quality"
     p = Path(log_folder)
     if not p.exists():
         p.mkdir(parents=True)
