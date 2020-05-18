@@ -19,7 +19,7 @@ sys.path.append(os.path.join(home_folder, 'statistics'))
 sys.path.append(os.path.join(home_folder, 'statistics', 'MCP'))
 
 from record_count import record_count_with_date, record_count
-from MCP import mcp_without_data, mcp_with_date
+from MCPCalculation import mcp_without_date, mcp_with_date
 
 logging.basicConfig(filename="gps_getting_server.log")
 
@@ -103,7 +103,7 @@ def call_mcp_refresh():
             date = datetime.now().strftime("%Y_%m_%d")
         result = mcp_with_date(date)
     else:
-        result = mcp_without_data()
+        result = mcp_without_date()
 
     str_result: str = ""
     for s in result:

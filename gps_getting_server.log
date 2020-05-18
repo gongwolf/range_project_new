@@ -151,3 +151,164 @@ In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_14_gps.log, th
 The GPS records refresh finished !!!!!.
 
 INFO:gps_webhook_listener_flask:::1 - - [2020-05-11 11:39:11] "GET /api/vi/gps/qualitycounts/refresh HTTP/1.1" 200 5406 2.533111
+INFO:gps_webhook_listener_flask:In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_23_gps.log, there are 2335 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_04_gps.log, there are 4745 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_08_gps.log, there are 2928 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_01_gps.log, there are 1 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_07_gps.log, there are 2986 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_15_gps.log, there are 2956 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_01_gps.log, there are 4226 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_09_gps.log, there are 2855 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_02_gps.log, there are 4134 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_22_gps.log, there are 2726 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_11_gps.log, there are 4221 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_13_gps.log, there are 2542 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_13_gps.log, there are 2564 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_26_gps.log, there are 2797 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_19_gps.log, there are 3248 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_07_gps.log, there are 6 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_12_gps.log, there are 2674 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_31_gps.log, there are 3144 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_02_29_gps.log, there are 238 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_18_gps.log, there are 3083 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_29_gps.log, there are 2877 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_04_gps.log, there are 6 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_24_gps.log, there are 2466 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_28_gps.log, there are 2830 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_21_gps.log, there are 2512 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_09_gps.log, there are 74 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_14_gps.log, there are 2961 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_30_gps.log, there are 2749 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_27_gps.log, there are 2696 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_02_28_gps.log, there are 23 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_12_gps.log, there are 3432 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_10_gps.log, there are 3295 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_05_gps.log, there are 43 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_25_gps.log, there are 2336 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_06_gps.log, there are 12 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_05_gps.log, there are 4776 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_03_gps.log, there are 4309 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_20_gps.log, there are 2303 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_10_gps.log, there are 272 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_22_gps.log, there are 206 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_17_gps.log, there are 3527 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_11_gps.log, there are 3547 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_06_gps.log, there are 4220 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_16_gps.log, there are 3233 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_14_gps.log, there are 2993 records are found 
+18/05/2020 16:47:45 : ================================================================
+The GPS MCP refresh finished !!!!!.
+
+INFO:gps_webhook_listener_flask:::1 - - [2020-05-18 16:47:45] "GET /api/vi/gps/mcp/refresh HTTP/1.1" 200 5402 7.977358
+INFO:gps_webhook_listener_flask:18/05/2020 16:47:54 : ================================================================
+The GPS MCP refresh finished !!!!!.
+
+INFO:gps_webhook_listener_flask:::1 - - [2020-05-18 16:47:54] "GET /api/vi/gps/mcp/refresh?date=today HTTP/1.1" 200 246 0.000793
+INFO:gps_webhook_listener_flask:In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_23_gps.log, there are 2335 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_04_gps.log, there are 4745 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_08_gps.log, there are 2928 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_01_gps.log, there are 1 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_07_gps.log, there are 2986 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_15_gps.log, there are 2956 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_01_gps.log, there are 4226 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_09_gps.log, there are 2855 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_02_gps.log, there are 4134 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_22_gps.log, there are 2726 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_11_gps.log, there are 4221 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_13_gps.log, there are 2542 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_13_gps.log, there are 2564 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_26_gps.log, there are 2797 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_19_gps.log, there are 3248 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_07_gps.log, there are 6 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_12_gps.log, there are 2674 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_31_gps.log, there are 3144 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_02_29_gps.log, there are 238 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_18_gps.log, there are 3083 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_29_gps.log, there are 2877 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_04_gps.log, there are 6 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_24_gps.log, there are 2466 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_28_gps.log, there are 2830 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_21_gps.log, there are 2512 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_09_gps.log, there are 74 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_14_gps.log, there are 2961 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_30_gps.log, there are 2749 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_27_gps.log, there are 2696 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_02_28_gps.log, there are 23 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_12_gps.log, there are 3432 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_10_gps.log, there are 3295 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_05_gps.log, there are 43 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_25_gps.log, there are 2336 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_06_gps.log, there are 12 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_05_gps.log, there are 4776 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_03_gps.log, there are 4309 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_20_gps.log, there are 2303 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_10_gps.log, there are 272 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_22_gps.log, there are 206 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_17_gps.log, there are 3527 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_11_gps.log, there are 3547 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_06_gps.log, there are 4220 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_16_gps.log, there are 3233 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_14_gps.log, there are 2993 records are found 
+18/05/2020 16:48:22 : ================================================================
+The GPS MCP refresh finished !!!!!.
+
+INFO:gps_webhook_listener_flask:::1 - - [2020-05-18 16:48:22] "GET /api/vi/gps/mcp/refresh HTTP/1.1" 200 5402 8.775348
+INFO:gps_webhook_listener_flask:::1 - - [2020-05-18 16:48:22] "GET /favicon.ico HTTP/1.1" 404 356 0.000627
+INFO:gps_webhook_listener_flask:In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_12_gps.log, there are 3432 records are found 
+18/05/2020 16:48:39 : ================================================================
+The GPS MCP refresh finished !!!!!.
+
+INFO:gps_webhook_listener_flask:::1 - - [2020-05-18 16:48:39] "GET /api/vi/gps/mcp/refresh?date=2020_04_12 HTTP/1.1" 200 361 0.237415
+INFO:gps_webhook_listener_flask:18/05/2020 16:48:45 : ================================================================
+The GPS MCP refresh finished !!!!!.
+
+INFO:gps_webhook_listener_flask:::1 - - [2020-05-18 16:48:45] "GET /api/vi/gps/mcp/refresh?date=today HTTP/1.1" 200 246 0.001128
+INFO:gps_webhook_listener_flask:In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_23_gps.log, there are 2335 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_04_gps.log, there are 4745 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_08_gps.log, there are 2928 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_01_gps.log, there are 1 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_07_gps.log, there are 2986 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_15_gps.log, there are 2956 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_01_gps.log, there are 4226 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_09_gps.log, there are 2855 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_02_gps.log, there are 4134 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_22_gps.log, there are 2726 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_11_gps.log, there are 4221 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_13_gps.log, there are 2542 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_13_gps.log, there are 2564 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_26_gps.log, there are 2797 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_19_gps.log, there are 3248 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_07_gps.log, there are 6 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_12_gps.log, there are 2674 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_31_gps.log, there are 3144 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_02_29_gps.log, there are 238 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_18_gps.log, there are 3083 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_29_gps.log, there are 2877 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_04_gps.log, there are 6 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_24_gps.log, there are 2466 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_28_gps.log, there are 2830 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_21_gps.log, there are 2512 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_09_gps.log, there are 74 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_14_gps.log, there are 2961 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_30_gps.log, there are 2749 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_27_gps.log, there are 2696 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_02_28_gps.log, there are 23 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_12_gps.log, there are 3432 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_10_gps.log, there are 3295 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_05_gps.log, there are 43 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_25_gps.log, there are 2336 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_06_gps.log, there are 12 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_05_gps.log, there are 4776 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_03_gps.log, there are 4309 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_20_gps.log, there are 2303 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_10_gps.log, there are 272 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_22_gps.log, there are 206 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_17_gps.log, there are 3527 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_11_gps.log, there are 3547 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_04_06_gps.log, there are 4220 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_16_gps.log, there are 3233 records are found 
+In the file /home/gqxwolf/google-drive/Cibils_Project/log/2020_03_14_gps.log, there are 2993 records are found 
+18/05/2020 16:48:56 : ================================================================
+The GPS records refresh finished !!!!!.
+
+INFO:gps_webhook_listener_flask:::1 - - [2020-05-18 16:48:56] "GET /api/vi/gps/qualitycounts/refresh HTTP/1.1" 200 5406 3.494691
