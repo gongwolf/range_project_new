@@ -143,13 +143,12 @@ def process_gps_records(log_files):
 
 
 def mcp_with_date(date):
-    print(" call the function to calculate the mcp with data {}".format(date))
+    print("call the function to calculate the mcp with data {}".format(date))
     log_files = [
         join(path, f)
         for f in listdir(path)
         if isfile(join(path, f)) and f.__contains__(date)
     ]
-    print(log_files)
     result = process_gps_records(log_files)
     return result
 
@@ -171,6 +170,7 @@ def mcp_yesterday():
 
 
 if __name__ == "__main__":
+    # mcp_today()
     schedule.every().day.at("00:10").do(mcp_today)
     schedule.every().day.at("00:10").do(mcp_yesterday)
 
