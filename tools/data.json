@@ -1,0 +1,39 @@
+[{
+  "dxProfileId": "iot-api",
+  "customerId": "100033601",
+  "deviceEUI": "20635F00C80000B1",
+  "time": "2020-06-28T11:32:42.843000+00:00",
+  "coordinates": [
+    -106.8745,
+    32.596966,
+    0.0
+  ],
+  "age": 7592,
+  "validityState": "PREVIOUS",
+  "horizontalAccuracy": 23,
+  "processedFeed": {
+    "SF": 7,
+    "payloadEncoded": "058481903040",
+    "sequenceNumber": 20629,
+    "dynamicMotionState": "MOVING",
+    "temperatureMeasure": 28.84706,
+    "processedPacket": {
+      "SNR": -4.0,
+      "RSSI": -117.0,
+      "baseStationId": "08080056",
+      "antennaCoordinates": [
+        -106.8689,
+        32.577698
+      ]
+    }
+  },
+  "resolvedTracker": {
+    "firmwareVersion": "1.7.5",
+    "messageType": "Heartbeat",
+    "trackingMode": "ACTIVITY_TRACKING",
+    "gpsScanMode": "UNKNOWN",
+    "sensorMode": "UNKNOWN",
+    "batteryLevel": 28,
+    "activityCount": 28487
+  }
+}]

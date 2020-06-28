@@ -74,7 +74,8 @@ def read_Json(f):
                 r_solved_obj.trackingMode = data["resolvedTracker"]["trackingMode"]
                 r_solved_obj.gpsScanMode = data["resolvedTracker"]["gpsScanMode"]
                 r_solved_obj.sensorMode = data["resolvedTracker"]["sensorMode"]
-                r_solved_obj.periodicPositionInterval = data["resolvedTracker"]["periodicPositionInterval"]
+                if "resolvedTracker" in data and "periodicPositionInterval" in data["resolvedTracker"]:
+                    r_solved_obj.periodicPositionInterval = data["resolvedTracker"]["periodicPositionInterval"]
                 r_solved_obj.batteryLevel = data["resolvedTracker"]["batteryLevel"]
                 if "resolvedTracker" in data and "activityCount" in data["resolvedTracker"]:
                     r_solved_obj.activityCount = data["resolvedTracker"]["activityCount"]

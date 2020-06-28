@@ -170,16 +170,16 @@ def mcp_yesterday():
 
 
 if __name__ == "__main__":
-    # mcp_today()
-    schedule.every().day.at("00:10").do(mcp_today)
-    schedule.every().day.at("00:10").do(mcp_yesterday)
+    mcp_with_date("2020_05_22")
+    # schedule.every().day.at("00:10").do(mcp_today)
+    # schedule.every().day.at("00:10").do(mcp_yesterday)
 
-    schedule.every().day.at("06:00").do(mcp_today)
-    schedule.every().day.at("12:00").do(mcp_today)
-    schedule.every().day.at("18:00").do(mcp_today)
-    schedule.every().day.at("23:00").do(mcp_today)
+    # schedule.every().day.at("06:00").do(mcp_today)
+    # schedule.every().day.at("12:00").do(mcp_today)
+    # schedule.every().day.at("18:00").do(mcp_today)
+    # schedule.every().day.at("23:00").do(mcp_today)
 
-    # schedule.run_all()
-    while True:
-        schedule.run_pending()
-        time.sleep(60)
+    # # schedule.run_all()
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(60)
