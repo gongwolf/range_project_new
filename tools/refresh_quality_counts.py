@@ -17,9 +17,5 @@ str_result: str = ""
 for s in result:
     str_result += s + "\n"
 str_result += "The GPS records refresh finished !!!!!.\n"
-web_result: str = ""
-for s in result:
-    web_result += s + "\n"
-web_result += "The GPS records refresh finished !!!!!.\n"
 
-print(web_result)
+print(str_result)

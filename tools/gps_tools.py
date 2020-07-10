@@ -78,7 +78,8 @@ def read_Json(f):
 
                     ##########################################################################
                     r_solved_obj = resolvedTrackerObj()
-                    r_solved_obj.firmwareVersion = data["resolvedTracker"]["firmwareVersion"]
+                    if "resolvedTracker" in data and "firmwareVersion" in data["resolvedTracker"]:
+                        r_solved_obj.firmwareVersion = data["resolvedTracker"]["firmwareVersion"]
                     r_solved_obj.messageType = data["resolvedTracker"]["messageType"]
                     r_solved_obj.trackingMode = data["resolvedTracker"]["trackingMode"]
                     r_solved_obj.gpsScanMode = data["resolvedTracker"]["gpsScanMode"]

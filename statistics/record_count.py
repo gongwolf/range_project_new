@@ -34,7 +34,7 @@ def record_quality_count(gps_records):
     result = {k: {"total": 0, "bad": 0, "new": 0} for k in device_list}
     result["Overall"] = {"total": 0, "bad": 0, "new": 0}
     for record in gps_records:
-        device_id = record.deviceEUI
+        device_id = record.deviceEUI.upper()
         vadility = record.validityState
         result[device_id]["total"] += 1
         result["Overall"]["total"] += 1
