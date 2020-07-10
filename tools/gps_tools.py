@@ -16,10 +16,16 @@ def read_Json(f):
     # print("Process the log file : {} ".format(f))
     with open(f, "r") as read_file:
         json_text = read_file.read()
-        records = json.loads(json.dumps(ast.literal_eval(json_text)))
+
+        try:
+            records = json.loads(json.dumps(ast.literal_eval(json_text)))
+        except ValueError:
+            records = json.loads(json_text)
+
         for idx, data in enumerate(records, start=1):
             try:
                 if "coordinates" in data:
+
                     coordinate = {
                         "lng": data["coordinates"][0],
                         "lat": data["coordinates"][1],
