@@ -13,9 +13,9 @@ from record_count import record_count_with_date, record_count
 
 result = record_count()
 
-str_result: str = ""
-for s in result:
-    str_result += s + "\n"
-str_result += "The GPS records refresh finished !!!!!.\n"
-
-print(str_result)
+# str_result: str = ""
+# for s in result:
+#     str_result += s + "\n"
+# str_result += "The GPS records refresh finished !!!!!.\n"
+#
+# print(str_result)

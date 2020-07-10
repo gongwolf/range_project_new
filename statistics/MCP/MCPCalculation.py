@@ -48,7 +48,7 @@ class Point:
 def get_points_list_by_device_id(gps_records, device_id):
     points = []
     for g in gps_records:
-        if g.deviceEUI == device_id:
+        if g.deviceEUI == device_id or g.deviceEUI.upper() == device_id:
             # x = g.coordinates['lng'] if g.coordinates['lng'] > 0 else -g.coordinates['lng']
             # y = g.coordinates['lat'] if g.coordinates['lat'] > 0 else -g.coordinates['lat']
             x = g.coordinates['lng']
@@ -126,7 +126,7 @@ def process_gps_records(log_files):
             with open(file_p, "a+") as target_f:
                 s = ""
                 for h in h_list:
-                    s += "[{}-{}]|".format(h[0], h[1])
+                    s += "[{};{}]|".format(h[0], h[1])
                 target_f.write("{},{},{},{},{}\n".format(device_id, len(points), len(h_list), convex_area, s))
 
         log_str = "In the file {}, there are {} records are found ".format(f, len(gps_records))

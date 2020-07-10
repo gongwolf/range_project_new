@@ -16,5 +16,3 @@ str_result: str = ""
 for s in result:
     str_result += s + "\n"
 str_result += "The GPS MCP refresh finished !!!!!.\n"
-
-print(str_result)
