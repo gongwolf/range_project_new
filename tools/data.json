@@ -1,39 +1,49 @@
-[{
-  "dxProfileId": "iot-api",
-  "customerId": "100033601",
-  "deviceEUI": "20635F00C80000B1",
-  "time": "2020-06-28T11:32:42.843000+00:00",
-  "coordinates": [
-    -106.8745,
-    32.596966,
-    0.0
-  ],
-  "age": 7592,
-  "validityState": "PREVIOUS",
-  "horizontalAccuracy": 23,
-  "processedFeed": {
-    "SF": 7,
-    "payloadEncoded": "058481903040",
-    "sequenceNumber": 20629,
-    "dynamicMotionState": "MOVING",
-    "temperatureMeasure": 28.84706,
-    "processedPacket": {
-      "SNR": -4.0,
-      "RSSI": -117.0,
-      "baseStationId": "08080056",
-      "antennaCoordinates": [
-        -106.8689,
-        32.577698
+[
+	{
+    "dxProfileId": "iot-api",
+    "customerId": "100033601",
+    "deviceEUI": "20635F00C8000085",
+    "time": "2020-03-30T06:00:29.820000+00:00",
+    "coordinates": [
+      -106.88679,
+      32.55716,
+      0.0
+    ],
+    "age": 224,
+    "validityState": "NEW",
+    "horizontalAccuracy": 11,
+    "processedFeed": {
+      "SF": 9,
+      "payloadEncoded": "034e9377c01c1367d4c04a5f01022187",
+      "sequenceNumber": 3402,
+      "dynamicMotionState": "MOVING",
+      "temperatureMeasure": 16.2,
+      "processedPacket": {
+        "SNR": -0.75,
+        "RSSI": -111.0,
+        "baseStationId": "08080056",
+        "antennaCoordinates": [
+          -106.86887,
+          32.577686
+        ]
+      }
+    },
+    "rawPosition": {
+      "rawPositionType": "RawPositionByGpsSolver",
+      "coordinates": [
+        -106.88679,
+        32.55716,
+        0.0
       ]
+    },
+    "resolvedTracker": {
+      "firmwareVersion": "1.7.5",
+      "messageType": "Position Message",
+      "trackingMode": "PERMANENT_TRACKING",
+      "gpsScanMode": "UNKNOWN",
+      "sensorMode": "GPS_ONLY",
+      "periodicPositionInterval": 900,
+      "batteryLevel": 86,
+      "activityCount": -1
     }
-  },
-  "resolvedTracker": {
-    "firmwareVersion": "1.7.5",
-    "messageType": "Heartbeat",
-    "trackingMode": "ACTIVITY_TRACKING",
-    "gpsScanMode": "UNKNOWN",
-    "sensorMode": "UNKNOWN",
-    "batteryLevel": 28,
-    "activityCount": 28487
-  }
 }]
