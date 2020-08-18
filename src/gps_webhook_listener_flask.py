@@ -9,6 +9,9 @@ from gevent.pywsgi import WSGIServer
 import sys
 from sys import platform
 import os
+from pathlib import Path
+from datetime import date
+
 
 if platform == "linux":
     home_folder = "/home/gqxwolf/mydata/range_project_new"
@@ -54,19 +57,41 @@ def verify_token(token):
 @auth.login_required
 def webhook():
     if request.method == "POST":
-        json_data = request.json
-        print(
-            "recievied the data at -- {} -- from [{}]".format(
-                datetime.now(), json_data["deviceEUI"]
+        try:
+            json_data = request.json
+            print(
+                "recievied the data at -- {} -- from [{}]".format(
+                    datetime.now(), json_data["deviceEUI"]
+                )
             )
-        )
-        app.logger.info(
-            "recievied the data at -- {} -- from [{}]".format(
-                datetime.now(), json_data["deviceEUI"]
+            app.logger.info(
+                "recievied the data at -- {} -- from [{}]".format(
+                    datetime.now(), json_data["deviceEUI"]
+                )
             )
-        )
-        writeToDisk(json.dumps(json_data))
-        return "", 200
+            writeToDisk(json.dumps(json_data))
+            return "", 200
+        except:
+            error_folder = ''
+            if platform == "linux":
+                error_folder = './logs/error'
+            elif platform == "win32":
+                error_folder = 'Z:\logs\error'
+            error_p = Path(error_folder)
+            if not error_p.exists():
+                error_p.mkdir()
+            today_error_log_file = date.today().__str__().replace("-", "_") + "_data_receiving_error.log"
+            p_error_log_file = error_p / today_error_log_file
+            with p_error_log_file.open("a") as f:
+                e = sys.exc_info()
+                # print("Error: {} ".format(e))
+                # print("Error data : {}".format(json_data))
+                # print("============================================")
+                f.write("Error while receiving the data at -- {} -- from [{}]".format(datetime.now(), json_data["deviceEUI"]))
+                f.write("Error: {} \n".format(e))
+                f.write("Error data : {}\n".format(json_data))
+                f.write("============================================\n")
+            abort(400)
     else:
         abort(400)
 
