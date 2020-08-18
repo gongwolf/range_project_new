@@ -12,7 +12,7 @@ sys.path.append(os.path.join(home_folder, 'statistics'))
 from record_count import record_count_with_date, record_count
 
 result = record_count()
-
+# result = record_count_with_date("2020_08_17")
 # str_result: str = ""
 # for s in result:
 #     str_result += s + "\n"

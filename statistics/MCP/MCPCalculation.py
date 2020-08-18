@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import List
 
 import schedule
+import scipy
 from scipy.spatial import ConvexHull
 import sys
 import numpy as np
@@ -23,7 +24,7 @@ sys.path.append(home_folder)
 import tools.gps_tools
 
 if platform == "linux":
-    path = "/home/gqxwolf/google-drive/Cibils_Project/log"
+    path = "/home/gqxwolf/mydata/range_project_new/logs"
 elif platform == "win32":
     path = "Z:\\logs"
     device_data_file = home_folder + "\\data\\DeviceList"
@@ -48,7 +49,7 @@ class Point:
 def get_points_list_by_device_id(gps_records, device_id):
     points = []
     for g in gps_records:
-        if g.deviceEUI == device_id or g.deviceEUI.upper() == device_id:
+        if g.deviceEUI == device_id or g.deviceEUI.upper() == device_id and g.resolvedTracker.messageType == "POSITION_MESSAGE":
             # x = g.coordinates['lng'] if g.coordinates['lng'] > 0 else -g.coordinates['lng']
             # y = g.coordinates['lat'] if g.coordinates['lat'] > 0 else -g.coordinates['lat']
             x = g.coordinates['lng']
@@ -70,6 +71,7 @@ def process_gps_records(log_files):
         p_path.mkdir(parents=True)
 
     for f in log_files:
+        # print(f)
         log_p = Path(f)
         year = log_p.stem.split("_")[0]
         month = log_p.stem.split("_")[1]
@@ -87,26 +89,44 @@ def process_gps_records(log_files):
             target_f.write(header)
 
         gps_records = tools.gps_tools.read_Json(f)
+        position_num = 0
 
         for device_id in device_list:
             points = get_points_list_by_device_id(gps_records, device_id)
+            position_num+=len(points)
 
             p_list = []
             for p in points:
                 p_list.append([p.x, p.y])
             points_array = np.array(p_list)
 
+            # if len(points)!=0 and device_id.upper()=="20635F00C80000E6":
+            #     print(device_id,len(points))
+            #     print(points_array)
+
             h_list = []
             convex_area = 0
 
             if len(points_array) != 0:
-                u = np.unique(points_array, axis=0)
+                u = np.unique(points_array, axis=0)  # list of the input nodes
+                print(device_id, len(u))
                 if u.shape[0] >= 3:
-                    hull = ConvexHull(u)
+                    try:
+                        hull = ConvexHull(u)
+                    except scipy.spatial.qhull.QhullError as e:
+                        print("Expection : =============================================")
+                        print("log file name : {}".format(f))
+                        print("device id     : {}".format(device_id))
+                        print("unique points list : {}".format(u))
+                        print("exception message information : \n{} ".format(e))
+                        print("=========================================================")
+                        continue
+                        # print(111111111111111)
 
                     # get convex hull points list
                     hx = []
                     hy = []
+                    # hull.vertices stores the index of the corner of the hull
                     for v in hull.vertices:
                         hx.append(u[v][0])
                         hy.append(u[v][1])
@@ -129,7 +149,7 @@ def process_gps_records(log_files):
                     s += "[{};{}]|".format(h[0], h[1])
                 target_f.write("{},{},{},{},{}\n".format(device_id, len(points), len(h_list), convex_area, s))
 
-        log_str = "In the file {}, there are {} records are found ".format(f, len(gps_records))
+        log_str = "In the file {}, there are {} records are found including {} POSITION message.".format(f, len(gps_records), position_num)
         print(log_str)
         result.append(log_str)
 

@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import List
 import schedule
 import sys
+import numpy as np
 
 if platform == "linux":
     home_folder = "/home/gqxwolf/mydata/range_project_new"
@@ -18,7 +19,7 @@ sys.path.append(home_folder)
 import tools.gps_tools
 
 if platform == "linux":
-    path = "/home/gqxwolf/google-drive/Cibils_Project/log"
+    path = "/home/gqxwolf/mydata/range_project_new/logs"
 elif platform == "win32":
     path = "Z:\\logs"
     device_data_file = home_folder + "\\data\\DeviceList"
@@ -31,6 +32,7 @@ with open(device_data_file) as f:
 
 
 def record_quality_count(gps_records):
+    count_list = {k: [] for k in device_list}
     result = {k: {"total": 0, "bad": 0, "new": 0} for k in device_list}
     result["Overall"] = {"total": 0, "bad": 0, "new": 0}
     for record in gps_records:
@@ -44,7 +46,34 @@ def record_quality_count(gps_records):
         elif vadility == "PREVIOUS" or vadility == "INVALID":
             result[device_id]["bad"] += 1
             result["Overall"]["bad"] += 1
-    return result
+        count_list[device_id].append(record.processedFeed.sequenceNumber)
+
+    lost_pac_result = {k: {"num": 0, "ratio": 0.0} for k in device_list}
+    lost_pac_result["Overall"] = {"num": 0, "ratio": 0.0}
+
+    total_expect_num = 0
+    total_lost_num = 0
+
+    for dev in count_list:
+        if len(count_list[dev]) != 0:
+            seq_list = np.asarray(count_list[dev])
+            expect_num = (seq_list.max() - seq_list.min() + 1);
+            act_num = len(seq_list)
+            lost_pac_result[dev]["ratio"] = round((expect_num - act_num) / expect_num, 5) * 100
+            lost_pac_result[dev]["num"] = (expect_num - act_num)
+            total_expect_num += expect_num
+            total_lost_num += (expect_num - act_num)
+            # print(dev, seq_list.max(), seq_list.min(), seq_list.max() - seq_list.min(), len(seq_list), lost_pac_result[dev]["ratio"] , lost_pac_result[dev]["num"])
+
+        else:
+            # print(dev, 0, 0, 0, 0)
+            lost_pac_result[dev]["ratio"] = 0.0
+            lost_pac_result[dev]["num"] = 0
+
+    # print(lost_pac_result)
+    lost_pac_result["Overall"]["ratio"] = round(total_lost_num / total_expect_num, 5) * 100
+    lost_pac_result["Overall"]["num"] = total_lost_num
+    return result, lost_pac_result
 
 
 def process_log_files_quality_count(log_files):
@@ -58,13 +87,14 @@ def process_log_files_quality_count(log_files):
         p.mkdir(parents=True)
 
     for f in log_files:
+        # print(f)
         log_p = Path(f)
         year = log_p.stem.split("_")[0]
         month = log_p.stem.split("_")[1]
         day = log_p.stem.split("_")[2]
 
         gps_records = tools.gps_tools.read_Json(f)
-        counts_results = record_quality_count(gps_records)
+        (counts_results, lost_pac_result) = record_quality_count(gps_records)
         str_re = "In the file {}, there are {} records are found ".format(
             f, len(gps_records)
         )
@@ -79,15 +109,17 @@ def process_log_files_quality_count(log_files):
 
         with open(file_p, "w") as f:
             header = (
-                "Device_id, total # of records, # of good records, # of bad records\n"
+                "Device_id, total # of records, # of good records, # of bad records, # of the lost packages, lost ratio(%)\n"
             )
             f.write(header)
             for key, value in counts_results.items():
                 f.write(
-                    "{},{},{},{}\n".format(
-                        key, value["total"], value["new"], value["bad"]
+                    "{},{},{},{},{},{}\n".format(
+                        key, value["total"], value["new"], value["bad"], lost_pac_result[key]["num"],
+                        lost_pac_result[key]["ratio"]
                     )
                 )
+        # sys.exit()
 
     dt_string = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     str_re = "{} : ================================================================".format(

@@ -11,7 +11,7 @@ sys.path.append(os.path.join(home_folder, 'statistics', 'MCP'))
 from MCPCalculation import mcp_without_date, mcp_with_date
 
 result = mcp_without_date()
-
+# result = mcp_with_date("2020_08_16")
 str_result: str = ""
 for s in result:
     str_result += s + "\n"

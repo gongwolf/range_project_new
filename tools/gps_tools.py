@@ -31,6 +31,7 @@ def read_Json(f):
                         "lat": data["coordinates"][1],
                         "alt": data["coordinates"][2]
                     }
+
                     record_obj = GPSrecord(coordinate)
                     record_obj.dxProfileId = data["dxProfileId"]
                     record_obj.customerId = data["customerId"]
@@ -95,6 +96,10 @@ def read_Json(f):
                     record_obj.rawPosition = r_position_obj
                     record_obj.resolvedTracker = r_solved_obj
                     gps_records.append(record_obj)
+                    # if record_obj.deviceEUI == "20635f00c80000e6":
+                    #     print(record_obj.deviceEUI,r_solved_obj.messageType, record_obj.coordinates, p_feed_obj.dynamicMotionState, p_feed_obj.payloadEncoded, p_feed_obj.sequenceNumber)
+                        # print(data)
+                        # print("=========================================================")
             except:
                 error_folder = ''
                 if platform == "linux":
