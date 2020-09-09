@@ -163,20 +163,31 @@ def process_gps_records(log_files):
 
 
 def mcp_with_date(date):
-    print("call the function to calculate the mcp with data {}".format(date))
-    log_files = [
-        join(path, f)
-        for f in listdir(path)
-        if isfile(join(path, f)) and f.__contains__(date)
-    ]
-    result = process_gps_records(log_files)
-    return result
+    try:
+        print("call the function to calculate the mcp with data {}".format(date))
+        log_files = [
+            join(path, f)
+            for f in listdir(path)
+            if isfile(join(path, f)) and f.__contains__(date)
+        ]
+        result = process_gps_records(log_files)
+        return result
+    except:
+        now = datetime.now()
+        str_datetime = now.strftime("%m/%d/%Y, %H:%M:%S")
+        print("call the function mcp_with_date() error at {}".format(str_datetime))
 
 
 def mcp_without_date():
-    log_files = [join(path, f) for f in listdir(path) if isfile(join(path, f))]
-    result = process_gps_records(log_files)
-    return result
+    try:
+        log_files = [join(path, f) for f in listdir(path) if isfile(join(path, f))]
+        result = process_gps_records(log_files)
+        return result
+    except:
+        now = datetime.now()
+        str_datetime = now.strftime("%m/%d/%Y, %H:%M:%S")
+        print("call the function mcp_without_date() error at {}".format(str_datetime))
+
 
 
 def mcp_today():

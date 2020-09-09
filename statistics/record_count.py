@@ -131,23 +131,34 @@ def process_log_files_quality_count(log_files):
 
 
 def record_count_with_date(date):
-    print("Call refresh function with parameters [{}] !!!!!!".format(date))
-    print("There are total {} devices.".format(len(device_list)))
-    log_files = [
-        join(path, f)
-        for f in listdir(path)
-        if isfile(join(path, f)) and f.__contains__(date)
-    ]
-    result = process_log_files_quality_count(log_files)
-    return result
+    try:
+        print("Call refresh function with parameters [{}] !!!!!!".format(date))
+        print("There are total {} devices.".format(len(device_list)))
+        log_files = [
+            join(path, f)
+            for f in listdir(path)
+            if isfile(join(path, f)) and f.__contains__(date)
+        ]
+        result = process_log_files_quality_count(log_files)
+        return result
+    except:
+        now = datetime.now()
+        str_datetime = now.strftime("%m/%d/%Y, %H:%M:%S")
+        print("call the function record_count_with_date() error at {}".format(str_datetime))
+
 
 
 def record_count():
-    print("Call refresh function without parameters !!!!!!")
-    print("There are total {} devices.".format(len(device_list)))
-    log_files = [join(path, f) for f in listdir(path) if isfile(join(path, f))]
-    result = process_log_files_quality_count(log_files)
-    return result
+    try:
+        print("Call refresh function without parameters !!!!!!")
+        print("There are total {} devices.".format(len(device_list)))
+        log_files = [join(path, f) for f in listdir(path) if isfile(join(path, f))]
+        result = process_log_files_quality_count(log_files)
+        return result
+    except:
+        now = datetime.now()
+        str_datetime = now.strftime("%m/%d/%Y, %H:%M:%S")
+        print("call the function record_count() error at {}".format(str_datetime))
 
 
 def record_count_with_today():
