@@ -216,7 +216,7 @@ def writeToDisk(json_data):
             f.write("]")
     else:
         # print("The log file exists, open it")
-        json_file = open(log_p, 'r')
+        json_file = open(log_p, 'r+')
         data = json.load(json_file)
         json_file.close()
         data.append(json.loads(json_data))

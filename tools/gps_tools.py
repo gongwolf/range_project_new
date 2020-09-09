@@ -14,7 +14,7 @@ from tools.GPSrecord import rawPositionObj
 def read_Json(f):
     gps_records = []
     # print("Process the log file : {} ".format(f))
-    with open(f, "r") as read_file:
+    with open(f, "r+") as read_file:
         json_text = read_file.read()
 
         try:
