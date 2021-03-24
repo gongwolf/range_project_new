@@ -38,6 +38,10 @@ def record_quality_count(gps_records):
     for record in gps_records:
         device_id = record.deviceEUI.upper()
         vadility = record.validityState
+
+        if device_id not in device_list:
+            continue
+
         result[device_id]["total"] += 1
         result["Overall"]["total"] += 1
         if vadility == "NEW":
