@@ -14,8 +14,11 @@ import numpy as np
 from pyproj import Proj
 from shapely.geometry import shape, Polygon
 
+
+
 if platform == "linux":
-    home_folder = "/home/gqxwolf/mydata/range_project_new"
+    # home_folder = "/home/gqxwolf/mydata/range_project_new"
+    home_folder = "/home/gqxwolf/mydata/range_project_new/"
 elif platform == "win32":
     home_folder = "C:\\range_project_new"
 
@@ -24,7 +27,8 @@ sys.path.append(home_folder)
 import tools.gps_tools
 
 if platform == "linux":
-    path = "/home/gqxwolf/mydata/range_project_new/logs"
+    # path = "/home/gqxwolf/mydata/range_project_new/logs"
+    path = "/home/gqxwolf/mydata/range_project_new/src/logs"
 elif platform == "win32":
     path = "Z:\\logs"
     device_data_file = home_folder + "\\data\\DeviceList"

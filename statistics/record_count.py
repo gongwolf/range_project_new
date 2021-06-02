@@ -10,7 +10,8 @@ import sys
 import numpy as np
 
 if platform == "linux":
-    home_folder = "/home/gqxwolf/mydata/range_project_new"
+    # home_folder = "/home/gqxwolf/mydata/range_project_new"
+    home_folder = "/home/gqxwolf/mydata/range_project_new/"
 elif platform == "win32":
     home_folder = "C:\\range_project_new"
 
@@ -19,7 +20,8 @@ sys.path.append(home_folder)
 import tools.gps_tools
 
 if platform == "linux":
-    path = "/home/gqxwolf/mydata/range_project_new/logs"
+    # path = "/home/gqxwolf/mydata/range_project_new/logs"
+    path = "/home/gqxwolf/mydata/range_project_new/src/logs"
 elif platform == "win32":
     path = "Z:\\logs"
     device_data_file = home_folder + "\\data\\DeviceList"
@@ -35,9 +37,17 @@ def record_quality_count(gps_records):
     count_list = {k: [] for k in device_list}
     result = {k: {"total": 0, "bad": 0, "new": 0} for k in device_list}
     result["Overall"] = {"total": 0, "bad": 0, "new": 0}
+
+    print("==================================")
+
     for record in gps_records:
         device_id = record.deviceEUI.upper()
         vadility = record.validityState
+
+        if device_id not in device_list:
+            continue
+
+        # print(device_id, vadility)
         result[device_id]["total"] += 1
         result["Overall"]["total"] += 1
         if vadility == "NEW":
@@ -47,12 +57,15 @@ def record_quality_count(gps_records):
             result[device_id]["bad"] += 1
             result["Overall"]["bad"] += 1
         count_list[device_id].append(record.processedFeed.sequenceNumber)
+    print("==================================")
 
     lost_pac_result = {k: {"num": 0, "ratio": 0.0} for k in device_list}
     lost_pac_result["Overall"] = {"num": 0, "ratio": 0.0}
 
     total_expect_num = 0
     total_lost_num = 0
+
+    print("==================================")
 
     for dev in count_list:
         if len(count_list[dev]) != 0:
@@ -70,7 +83,6 @@ def record_quality_count(gps_records):
             lost_pac_result[dev]["ratio"] = 0.0
             lost_pac_result[dev]["num"] = 0
 
-    # print(lost_pac_result)
     lost_pac_result["Overall"]["ratio"] = round(total_lost_num / total_expect_num, 5) * 100
     lost_pac_result["Overall"]["num"] = total_lost_num
     return result, lost_pac_result
@@ -87,23 +99,28 @@ def process_log_files_quality_count(log_files):
         p.mkdir(parents=True)
 
     for f in log_files:
-        # print(f)
+        print(f)
         log_p = Path(f)
         year = log_p.stem.split("_")[0]
         month = log_p.stem.split("_")[1]
         day = log_p.stem.split("_")[2]
 
         gps_records = tools.gps_tools.read_Json(f)
+        print(":::::::::::::::::::::::::::::")
         (counts_results, lost_pac_result) = record_quality_count(gps_records)
-        str_re = "In the file {}, there are {} records are found ".format(
-            f, len(gps_records)
-        )
+        print(":::::::::::::::::::::::::::::")
+
+        str_re = "In the file {}, there are {} records are found ".format(f, len(gps_records))
+
+        print(":::::::::::::::::::::::::::::")
         print(str_re)
         result.append(str_re)
 
         file_name = "record_statistics_" + year + "_" + month + "_" + day + ".csv"
 
         file_p = p / file_name
+        print(file_p)
+
         if file_p.exists():
             file_p.unlink()
 
@@ -131,7 +148,7 @@ def process_log_files_quality_count(log_files):
 
 
 def record_count_with_date(date):
-    try:
+    # try:
         print("Call refresh function with parameters [{}] !!!!!!".format(date))
         print("There are total {} devices.".format(len(device_list)))
         log_files = [
@@ -141,11 +158,10 @@ def record_count_with_date(date):
         ]
         result = process_log_files_quality_count(log_files)
         return result
-    except:
-        now = datetime.now()
-        str_datetime = now.strftime("%m/%d/%Y, %H:%M:%S")
-        print("call the function record_count_with_date() error at {}".format(str_datetime))
-
+    # except:
+    #     now = datetime.now()
+    #     str_datetime = now.strftime("%m/%d/%Y, %H:%M:%S")
+    #     print("call the function record_count_with_date() error at {}".format(str_datetime))
 
 
 def record_count():
