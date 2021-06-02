@@ -191,6 +191,8 @@ if __name__ == "__main__":
     # record_count_with_date("2020_04_20")
     # today = datetime.now().strftime("%Y_%m_%d")
     # yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y_%m_%d")
+    print("Running the script of calculating the quality of the records:-------------------------")
+    print("======================================================================================")
     schedule.every().day.at("00:10").do(record_count_with_today)
     schedule.every().day.at("00:10").do(record_count_with_yesterday)
 

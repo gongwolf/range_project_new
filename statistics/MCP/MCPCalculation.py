@@ -206,6 +206,8 @@ def mcp_yesterday():
 
 if __name__ == "__main__":
     # mcp_with_date("2020_05_22")
+    print("Running the script of calculating the MCP area:-------------------------")
+    print("========================================================================")
     schedule.every().day.at("00:10").do(mcp_today)
     schedule.every().day.at("00:10").do(mcp_yesterday)
 
