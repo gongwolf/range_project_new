@@ -17,16 +17,14 @@ from os.path import isfile, join
 # }
 # """
 
-# {'trackerCommandType': 'TrackerCommandToChangeParams',
-#  'deviceEUI': '20635F00C8000062',
-#  'status': 'QUEUED',
-#  'parameters':[
-#      {'paramName':'GEOLOC_SENSOR_PROFILE', 'paramValue':1},
-#      {'paramName':'ONESHOT_GEOLOC_METHOD', 'paramValue':1}
-#  ]
-#  }
-
-
+# data = """
+# {
+#   "deviceEUI": "20635F00C80000E4",
+#   "trackerCommandType": "TrackerCommandToChangeMode",
+#   "status": "QUEUED",
+#   "newMode": "OFF"
+# }
+# """
 
 if platform == "linux":
     home_folder = "/home/gqxwolf/mydata/range_project_new"
@@ -49,7 +47,7 @@ def updateParameters(data):
     header.update({'Content-Type': 'application/json'})
     header.update({'accept': 'application/json'})
     header.update({
-        'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJTVUJTQ1JJQkVSOjMzNjAxIl0sImV4cCI6MTYwMjM5MjQ5OSwianRpIjoiZWIwNDJhOTctNTYxMi00ODg5LTg3ZjktODJmMGM2N2Y0YzEzIiwiY2xpZW50X2lkIjoiaW90LWFwaS9hY2liaWxzQG5tc3UuZWR1In0.O0qpLFoUTN96I6Ut5RVg-qbXaIWNuJ99SyZ9V21jT5BO99y-A9BmysIW7YyoZHhOIksZZtVP3wD2RSdPw8WtBg'})
+        'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJTVUJTQ1JJQkVSOjQ1MTk0Il0sImV4cCI6MTYyMjA0NzQxMCwianRpIjoiMTUwNTZkMDEtOWViNS00ODgyLTllYWYtMWIwZGI1YTZlNDM2IiwiY2xpZW50X2lkIjoidHBlLWV1LWFwaS9xaXh1Z29uZ0BubXN1LmVkdSJ9.AnH6uIs-ZC_q3KrwwIBf3EljlWIkvx3XKEcQt_dpHQZ5OHu5XntX92XGMvLulFPSo7QOE5nWfoXRIlWNurt2hA'})
 
     req = requests.post(url, data=data, headers=header)
     # print(req.content)
@@ -61,7 +59,34 @@ if __name__ == "__main__":
         device_list = f.readlines()
         device_list = [str(d.strip()) for d in device_list]
         for index, d in enumerate(device_list, 1):
-            data = "{\"trackerCommandType\": \"TrackerCommandToChangeParams\",\"deviceEUI\": \"" + d + "\",\"status\": \"QUEUED\",\"parameters\":[{\"paramName\":\"GEOLOC_SENSOR_PROFILE\", \"paramValue\":1},{\"paramName\":\"ONESHOT_GEOLOC_METHOD\", \"paramValue\":1}]}"
+            ##"Positioning Strategy" and "Periodic or On demand mode" be to changed to GPS only strategy.
+            ##data = "{\"trackerCommandType\": \"TrackerCommandToChangeParams\",\"deviceEUI\": \"" + d + "\",\"status\": \"QUEUED\",\"parameters\":[{\"paramName\":\"GEOLOC_SENSOR_PROFILE\", \"paramValue\":1},{\"paramName\":\"ONESHOT_GEOLOC_METHOD\", \"paramValue\":1}]}"
+
+            ## Change the tracker mode to OFF
+            # data="{\"deviceEUI\": \"" + d + "\",\"trackerCommandType\": \"TrackerCommandToChangeMode\",\"status\": \"QUEUED\",\"newMode\": \"OFF\"}"
+
+            # change the tracker mode to ACTIVITY_MONITORING
+            # data="{\"deviceEUI\": \"" + d + "\",\"trackerCommandType\": \"TrackerCommandToSendRawData\",\"status\": \"QUEUED\",\"rawPayload\": \"020a04\"}"
             # print(data)
+            # status_code = updateParameters(data)
+            # print("{}: device: {}   --> status_code:{}".format(index, d, status_code))
+
+
+            ## change the configuration
+            #  UL_PERIOD = 60
+            #  LORA_PERIOD = 300
+            #  PERIODIC_POS_PERIOD = 900
+            #  GEOLOC_SENSOR = 1
+            #  GEOLOC_METHOD = 1
+            # data="{\"deviceEUI\": \"" + d + "\",\"trackerCommandType\": \"TrackerCommandToSendRawData\",\"status\": \"QUEUED\",\"rawPayload\": \"0b0a000000003c0100000258030000038405000000010600000001\"}"
+            # print(data)
+            # status_code = updateParameters(data)
+            # print("{}: device: {}   --> status_code:{}".format(index, d, status_code))
+            # break
+
+            # ## Change the transmission to "Double Random Datarate"
+            data="{\"deviceEUI\": \"" + d + "\",\"trackerCommandType\": \"TrackerCommandToSendRawData\",\"status\": \"QUEUED\",\"rawPayload\": \"0b0a0e00000004\"}"
+            print(data)
             status_code = updateParameters(data)
             print("{}: device: {}   --> status_code:{}".format(index, d, status_code))
+

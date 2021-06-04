@@ -101,22 +101,23 @@ def read_Json(f):
                         # print(data)
                         # print("=========================================================")
             except:
-                error_folder = ''
-                if platform == "linux":
-                    error_folder = './logs/error'
-                elif platform == "win32":
-                    error_folder = 'Z:\logs\error'
-                error_p = Path(error_folder)
-                if not error_p.exists():
-                    error_p.mkdir()
-                today_error_log_file = date.today().__str__().replace("-", "_") + "_error.log"
-                p_error_log_file = error_p / today_error_log_file
-                with p_error_log_file.open("a") as f:
-                    e = sys.exc_info()
-                    print("Error: {} ".format(e))
-                    print("Error data : {}".format(data))
-                    print("============================================")
-                    f.write("Error: {} \n".format(e))
-                    f.write("Error data : {}\n".format(data))
-                    f.write("============================================\n")
+                print(1987)
+                # error_folder = ''
+                # if platform == "linux":
+                #     error_folder = './logs/error'
+                # elif platform == "win32":
+                #     error_folder = 'Z:\logs\error'
+                # error_p = Path(error_folder)
+                # if not error_p.exists():
+                #     error_p.mkdir()
+                # today_error_log_file = date.today().__str__().replace("-", "_") + "_error.log"
+                # p_error_log_file = error_p / today_error_log_file
+                # with p_error_log_file.open("a") as f:
+                #     e = sys.exc_info()
+                #     print("Error: {} ".format(e))
+                #     print("Error data : {}".format(data))
+                #     print("============================================")
+                #     f.write("Error: {} \n".format(e))
+                #     f.write("Error data : {}\n".format(data))
+                #     f.write("============================================\n")
     return gps_records

@@ -53,6 +53,7 @@ class Point:
 def get_points_list_by_device_id(gps_records, device_id):
     points = []
     for g in gps_records:
+        # only consider the type of GPS records that is "POSITION_MESSAGE"
         if g.deviceEUI == device_id or g.deviceEUI.upper() == device_id and g.resolvedTracker.messageType == "POSITION_MESSAGE":
             # x = g.coordinates['lng'] if g.coordinates['lng'] > 0 else -g.coordinates['lng']
             # y = g.coordinates['lat'] if g.coordinates['lat'] > 0 else -g.coordinates['lat']

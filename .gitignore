@@ -15,3 +15,5 @@ log
 logs
 processLogFiles/logs
 gps_getting_server.log
+
+Sensors/download.csv
