@@ -224,18 +224,18 @@ def mcp_yesterday():
 
 
 if __name__ == "__main__":
-    mcp_with_date("2021_06_01")
-    # print("Running the script of calculating the MCP area:-------------------------")
-    # print("========================================================================")
-    # schedule.every().day.at("00:10").do(mcp_today)
-    # schedule.every().day.at("00:10").do(mcp_yesterday)
+    # mcp_with_date("2021_06_01")
+    print("Running the script of calculating the MCP area:-------------------------")
+    print("========================================================================")
+    schedule.every().day.at("00:10").do(mcp_today)
+    schedule.every().day.at("00:10").do(mcp_yesterday)
 
-    # schedule.every().day.at("06:00").do(mcp_today)
-    # schedule.every().day.at("12:00").do(mcp_today)
-    # schedule.every().day.at("18:00").do(mcp_today)
-    # schedule.every().day.at("23:00").do(mcp_today)
+    schedule.every().day.at("06:00").do(mcp_today)
+    schedule.every().day.at("12:00").do(mcp_today)
+    schedule.every().day.at("18:00").do(mcp_today)
+    schedule.every().day.at("23:00").do(mcp_today)
 
-    # # schedule.run_all()
-    # while True:
-    #     schedule.run_pending()
-    #     time.sleep(60)
+    # schedule.run_all()
+    while True:
+        schedule.run_pending()
+        time.sleep(60)
