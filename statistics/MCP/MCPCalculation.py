@@ -5,13 +5,14 @@ from os.path import isfile, join
 from os import listdir
 from pathlib import Path
 from typing import List
+from pyproj.transformer import Transformer
 
 import schedule
 import scipy
 from scipy.spatial import ConvexHull
 import sys
 import numpy as np
-from pyproj import Proj
+from pyproj import Proj, transform
 from shapely.geometry import shape, Polygon
 
 
@@ -139,14 +140,31 @@ def process_gps_records(log_files):
 
                     # project
                     lon, lat = zip(*[u[hull.vertices, :]][0])
-                    pa = Proj("+proj=aea +lat_1=37.0 +lat_2=41.0 +lat_0=39.0 +lon_0=-106.55")
-                    x, y = pa(lon, lat)
+                    # pa = Proj("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
 
+                    # out_crs = '+proj=utm +zone=+13K'
+                    # inProj = Proj('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
+                    # outProj = Proj(out_crs)
+                    
+                    trs = Transformer.from_crs('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs', '+proj=utm +zone=+13k')
+                    # print(111111111111111)
+
+                    x, y = trs.transform(lon, lat)
+                    # x, y = transform(inProj, outProj, lon, lat)
+                    # print(x)
+                    # print(y)
                     # calculate the area
-                    ob = [zip(x, y)]
-                    convex_area = Polygon(ob[0], ob[1:]).area  # square meters
+                    ob = list(zip(x, y))
+                    # for d in ob:
+                    #     print(d)
+                    # print(ob)
+                    convex_area = Polygon(ob).area # square meters
+                    # print(convex_area)
+                    # print(ob[0])
+                    # print(ob[1:])
+                    # sys.exit()
             # print("device_id:{} len of points:{} len of convex list:{} convex_area:{}".format(device_id, len(points),
-            #                                                                                   len(h_list), convex_area))
+            #                                                                                  len(h_list), convex_area))
 
             with open(file_p, "a+") as target_f:
                 s = ""
@@ -206,18 +224,18 @@ def mcp_yesterday():
 
 
 if __name__ == "__main__":
-    # mcp_with_date("2020_05_22")
-    print("Running the script of calculating the MCP area:-------------------------")
-    print("========================================================================")
-    schedule.every().day.at("00:10").do(mcp_today)
-    schedule.every().day.at("00:10").do(mcp_yesterday)
+    mcp_with_date("2021_06_01")
+    # print("Running the script of calculating the MCP area:-------------------------")
+    # print("========================================================================")
+    # schedule.every().day.at("00:10").do(mcp_today)
+    # schedule.every().day.at("00:10").do(mcp_yesterday)
 
-    schedule.every().day.at("06:00").do(mcp_today)
-    schedule.every().day.at("12:00").do(mcp_today)
-    schedule.every().day.at("18:00").do(mcp_today)
-    schedule.every().day.at("23:00").do(mcp_today)
+    # schedule.every().day.at("06:00").do(mcp_today)
+    # schedule.every().day.at("12:00").do(mcp_today)
+    # schedule.every().day.at("18:00").do(mcp_today)
+    # schedule.every().day.at("23:00").do(mcp_today)
 
-    # schedule.run_all()
-    while True:
-        schedule.run_pending()
-        time.sleep(60)
+    # # schedule.run_all()
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(60)
