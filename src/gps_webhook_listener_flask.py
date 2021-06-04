@@ -32,13 +32,9 @@ app.logger.setLevel(logging.INFO)
 
 token_serializer = Serializer(app.config["SECRET_KEY"])
 
-auth = HTTPTokenAuth("Bearer")
-
-users = ["gqxwolf", "Huiping", "Cibils"]
-for user in users:
-    token = token_serializer.dumps({"username": user}).decode("utf-8")
-    print("*** token for {}: {}".format(user, token))
-
+############################################
+Hidden the credential informations, find in the note.txt, paste it between two lines. 
+############################################
 
 @auth.verify_token
 def verify_token(token):
