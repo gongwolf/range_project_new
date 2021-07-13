@@ -15,7 +15,7 @@
         - Binder configuration that allows sending downlink to 3rd-party trackers (other than Abeeway trackers). [Link](https://dx-api.thingpark.com/location/latest/doc/index.html)
         - Abeeway Data Management: [Link](https://thingparkenterprise.eu.actility.com/thingpark/abeewayDeviceAnalyzer/index.php?dxprofile=thingparkenterprise)
     - kerlink, API [[Docs](https://wmc-poc.wanesy.com/gms/application/doc#introduction)], [[Swagger-UI](https://wmc-poc.wanesy.com/gms/?url=/gms/application/openapi)].
-        - generate the Token that is used for 3rd-party integration. [Link](https://wmc-poc.wanesy.com/gms/?url=/gms/application/openapi#/login/login)
+        - <a id="kerlink_token"></a> generate the Token that is used for 3rd-party integration. [Link](https://wmc-poc.wanesy.com/gms/?url=/gms/application/openapi#/login/login)
 - Rain gauge & Water level
     - Decentlab, provide python compatable API and data format, APIs can be found [here](https://docs.decentlab.com/data-access-guide/v5/api/python-ref.html)
     - Login URL: https://nmsu.decentlab.com/login
@@ -47,7 +47,7 @@
 ---------------------------------
 1. Start Ngork: 
 &nbsp;&nbsp;&nbsp;&nbsp; ``Execute the command: ngrok.exe http -region=us -hostname=data-receiving.ngrok.io 5000 ``
-2. Update the API configuration by using the new URL(If needed)  
+2. Update the API configuration by using the new URL(If needed)<a id="abeeway_token"/>
     1. ``Open the API configuration URL https://dx-api.thingpark.com/getstarted/#/ ``
     2. ``Login with your credential. The target profile indentifier = tpe-eu-api`` 
     3. ``Type in your username and password, generate the new token``  
@@ -60,9 +60,28 @@
 4. Update the credential information for the 3rd-party integration:
     1. renew the Abeeway token (login to generate a new token, or renew the old token from the code)
     2. renew the Kerlink token (https://wmc-poc.wanesy.com/gms/?url=/gms/application/openapi#/login/login)
-    
+
+##### Start server from task schedular:
+Also you can start the all the code by using the windows task schedular. Those schedular is used to make all the codes are executed automatically once the server restarted. The schedular works properly. But the outputs are stored in a mount network driver that you must login the system to mount it. That's the issue that the code can not work as we want. But you still can run all the code by using the schedular. 
+<img src="imgs/3-rd_integration/04_task_schedular.png" alt="overview with Dashboard" style="width:80%"/>
+
 ### 3rd-party integration
 ----------------------------------------------------------------------------------
 Access the node-red configuration: http://3rd-party-integration.ngrok.io/.
 - https://nano-things.net/red
 - https://github.com/actility/thingpark-integrations/tree/main/3_NS-NIT-tpLS/NIT
+
+Start the node-red on the server:
+1. start the ngork to open the tuuel, ```ngrok http -region=us -hostname=3rd-party-integration.ngrok.io 1880```
+<img src="imgs/3-rd_integration/00_start_ngork_for_3rdIntegration.png" alt="overview with Dashboard" style="width:80%"/>
+
+2. start the node-red from the powershell or command line.
+-hostname=3rd-party-integration.ngrok.io 1880```
+<img src="imgs/3-rd_integration/01_start_node_red.png" alt="overview with Dashboard" style="width:80%"/>
+
+3. Access the node-red [platform](3rd-party-integration.ngrok.io) and login the system. 
+<img src="imgs/3-rd_integration/03_node-red_login.png" alt="overview with Dashboard" style="width:80%"/>
+
+4. Update the authentication information (uplink and downlink),[kerlink auth](#kerlink_token), [Abeeway auth](#abeeway_token).
+<img src="imgs/3-rd_integration/02_update_tokens.png" alt="overview with Dashboard" style="width:80%"/>
+
