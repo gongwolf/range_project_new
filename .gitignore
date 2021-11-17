@@ -5,6 +5,7 @@ lib64
 pyvenv.cfg
 share
 Scripts
+env
 
 src/logs
 src/.vscode
