@@ -140,7 +140,8 @@ def processRecord(data):
         if platform == "linux":
             error_folder = './logs/error'
         elif platform == "win32":
-            error_folder = 'Z:\logs\error'
+            # error_folder = 'Z:\Abeeway\logs\error'
+            error_folder = 'C:\range_project_new\logs\error'
         error_p = Path(error_folder)
         if not error_p.exists():
             error_p.mkdir()
@@ -162,7 +163,8 @@ def updateTheCSVFile(str_log_file_name, record):
     if platform == "linux":
         log_folder = './logs/csv'
     elif platform == "win32":
-        log_folder = 'Z:\logs\csv'
+        # log_folder = 'Z:\Abeeway\logs\csv'
+        log_folder = 'C:\range_project_new\logs\csv'
     p = Path(log_folder)
     if not p.exists():
         p.mkdir()
@@ -200,7 +202,8 @@ def writeToDisk(json_data):
     if platform == "linux":
         log_folder = './logs'
     elif platform == "win32":
-        log_folder = "Z:\logs"
+        # log_folder = "Z:\Abeeway\logs"
+        log_folder = 'C:\range_project_new\logs'
 
     p = Path(log_folder)
     if not p.exists():

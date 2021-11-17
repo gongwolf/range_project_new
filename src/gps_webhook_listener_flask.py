@@ -12,6 +12,8 @@ import os
 from pathlib import Path
 from datetime import date
 
+#from statistics_dir\MCPCalculation.py import mcp_without_date, mcp_with_date
+#from statistics_dir\record_count.py import record_count_with_date, record_count
 
 if platform == "linux":
     home_folder = "/home/gqxwolf/mydata/range_project_new"
@@ -33,7 +35,12 @@ app.logger.setLevel(logging.INFO)
 token_serializer = Serializer(app.config["SECRET_KEY"])
 
 ############################################
-Hidden the credential informations, find in the note.txt, paste it between two lines. 
+auth = HTTPTokenAuth("Bearer")
+
+users = ["gqxwolf", "Huiping", "Cibils"]
+for user in users:
+    token = token_serializer.dumps({"username": user}).decode("utf-8")
+    print("*** token for {}: {}".format(user, token))
 ############################################
 
 @auth.verify_token
@@ -72,7 +79,8 @@ def webhook():
             if platform == "linux":
                 error_folder = './logs/error'
             elif platform == "win32":
-                error_folder = 'Z:\logs\error'
+                # error_folder = 'Z:\Abeeway\logs\error'
+                error_folder = 'C:\range_project_new\logs\error'
             error_p = Path(error_folder)
             if not error_p.exists():
                 error_p.mkdir()

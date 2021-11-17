@@ -23,8 +23,9 @@ if platform == "linux":
     # path = "/home/gqxwolf/mydata/range_project_new/logs"
     path = "/home/gqxwolf/mydata/range_project_new/src/logs"
 elif platform == "win32":
-    path = "Z:\\logs"
-    device_data_file = home_folder + "\\data\\DeviceList"
+    # path = "Z:\\Abeeway\logs"
+    path = 'C:\range_project_new\logs'
+    device_data_file = home_folder + "\data\DeviceList"
 
 device_data_file = join(home_folder, "data", "DeviceList")
 
@@ -93,7 +94,8 @@ def process_log_files_quality_count(log_files):
     if platform == "linux":
         log_folder = home_folder + "/logs/statistics/record_quality"
     elif platform == "win32":
-        log_folder = "Z:\logs\statistics\\record_quality"
+        # log_folder = "Z:\Abeeway\logs\statistics\record_quality"
+        log_folder = 'C:\range_project_new\logs\statistics\record_quality'
     p = Path(log_folder)
     if not p.exists():
         p.mkdir(parents=True)
