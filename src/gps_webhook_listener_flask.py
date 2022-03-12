@@ -18,7 +18,7 @@ from datetime import date
 if platform == "linux":
     home_folder = "/home/gqxwolf/mydata/range_project_new"
 elif platform == "win32":
-    home_folder = 'C:\\range_project_new'
+    home_folder = 'C:/range_project_new'
 
 sys.path.append(os.path.join(home_folder, 'statistics'))
 sys.path.append(os.path.join(home_folder, 'statistics', 'MCP'))
@@ -80,7 +80,7 @@ def webhook():
                 error_folder = './logs/error'
             elif platform == "win32":
                 # error_folder = 'Z:\Abeeway\logs\error'
-                error_folder = 'C:\range_project_new\logs\error'
+                error_folder = 'C:/range_project_new/logs/error'
             error_p = Path(error_folder)
             if not error_p.exists():
                 error_p.mkdir()

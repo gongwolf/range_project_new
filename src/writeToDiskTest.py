@@ -16,54 +16,6 @@ import io
 import sys
 
 
-json_data = {
-  "dxProfileId": "iot-api",
-  "customerId": "100033601",
-  "deviceEUI": "20635F00C8000015",
-  "time": "2019-10-10T21:44:03.311000+00:00",
-  "coordinates": [
-    -106.80398,
-    32.529972,
-    0.0
-  ],
-  "age": 188961,
-  "validityState": "PREVIOUS",
-  "horizontalAccuracy": 7,
-  "processedFeed": {
-    "payloadEncoded": "03489499a0251370fec0608e01dca206",
-    "sequenceNumber": 13895,
-    "dynamicMotionState": "STATIC",
-    "temperatureMeasure": 33.4,
-    "processedPacket": {
-      "RSSI": -45.0,
-      "baseStationId": "08080056",
-      "antennaCoordinates": [
-        -106.74136,
-        32.61721
-      ]
-    }
-  },
-  "rawPosition": {
-    "rawPositionType": "RawPositionByGpsSolver",
-    "coordinates": [
-      -106.7414,
-      32.617214,
-      0.0
-    ]
-  },
-  "resolvedTracker": {
-    "firmwareVersion": "1.7.3",
-    "messageType": "Position Message",
-    "trackingMode": "PERMANENT_TRACKING",
-    "gpsScanMode": "UNKNOWN",
-    "sensorMode": "GPS_ONLY",
-    "periodicPositionInterval": 0,
-    "batteryLevel": 68,
-    "activityCount": -1
-  }
-}
-
-
 def processRecord(data):
     try:
         # print("{} : {} ".format(idx, record))
@@ -140,7 +92,7 @@ def processRecord(data):
             error_folder = './logs/error'
         elif platform == "win32":
             # error_folder = 'Z:\Abeeway\logs\error'
-            error_folder = 'C:/range_project_new/logs/error'
+            error_folder = 'C:\range_project_new\logs\error'
         error_p = Path(error_folder)
         if not error_p.exists():
             error_p.mkdir()
@@ -196,16 +148,20 @@ def updateTheCSVFile(str_log_file_name, record):
         new_df.to_csv(csv_p, index=None)
 
 
-def writeToDisk(json_data):
+def writeToDiskTest(json_data):
+    # print('json_data:', json_data)
     log_folder = ""
     if platform == "linux":
+        print('X')
         log_folder = './logs'
     elif platform == "win32":
+        print('Y')
         # log_folder = "Z:\Abeeway\logs"
-        log_folder = 'C:/range_project_new/logs'
+        log_folder = "C:/range_project_new/logs"
     print('LOG PATH:', log_folder)
 
     p = Path(log_folder)
+    print('p:', p)
     if not p.exists():
         p.mkdir()
         print('P DOES NOT EXIST!')
@@ -213,7 +169,7 @@ def writeToDisk(json_data):
     print('today_log_file:', today_log_file)
     log_p = p / today_log_file
     print('log_p:', log_p)
-    print(log_p.exists())
+    print('log_p.exists()?', log_p.exists())
     if not log_p.exists():
         print("The log file does not exist, create it")
         with open(log_p, 'w') as f:
@@ -222,9 +178,12 @@ def writeToDisk(json_data):
             f.write("]")
     else:
         print("The log file exists, open it")
-        json_file = open(log_p, 'r+')
-        data = json.load(json_file)
-        json_file.close()
+        with open(log_p, 'r+') as j:
+            data = json.loads(j.read())
+        # json_file = open(log_p, 'r+')
+        # data = json.load(json_file)
+        print('data:', data)
+        j.close()
         data.append(json.loads(json_data))
         with open(log_p, 'w') as f:
             json.dump(data, f)
@@ -232,4 +191,56 @@ def writeToDisk(json_data):
     str_today = date.today().__str__().replace("-", "_")
     updateTheCSVFile(str_today, json_data)
 
-# writeToDisk(json_data)
+
+json_data = """
+{
+  "dxProfileId": "iot-api",
+  "customerId": "100033601",
+  "deviceEUI": "20635F00C8000015",
+  "time": "2019-10-10T21:44:03.311000+00:00",
+  "coordinates": [
+    -106.80398,
+    32.529972,
+    0.0
+  ],
+  "age": 188961,
+  "validityState": "PREVIOUS",
+  "horizontalAccuracy": 7,
+  "processedFeed": {
+    "payloadEncoded": "03489499a0251370fec0608e01dca206",
+    "sequenceNumber": 13895,
+    "dynamicMotionState": "STATIC",
+    "temperatureMeasure": 33.4,
+    "processedPacket": {
+      "RSSI": -45.0,
+      "baseStationId": "08080056",
+      "antennaCoordinates": [
+        -106.74136,
+        32.61721
+      ]
+    }
+  },
+  "rawPosition": {
+    "rawPositionType": "RawPositionByGpsSolver",
+    "coordinates": [
+      -106.7414,
+      32.617214,
+      0.0
+    ]
+  },
+  "resolvedTracker": {
+    "firmwareVersion": "1.7.3",
+    "messageType": "Position Message",
+    "trackingMode": "PERMANENT_TRACKING",
+    "gpsScanMode": "UNKNOWN",
+    "sensorMode": "GPS_ONLY",
+    "periodicPositionInterval": 0,
+    "batteryLevel": 68,
+    "activityCount": -1
+  }
+}
+"""
+
+
+
+writeToDiskTest(json_data)
